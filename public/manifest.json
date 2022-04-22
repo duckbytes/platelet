@@ -11,10 +11,6 @@
             "src": "icon/hires.webp",
             "sizes": "512x512",
             "type": "image/webp"
-        },
-        {
-            "src": "icon/hd_hi.ico",
-            "sizes": "256x256"
         }
     ],
 
