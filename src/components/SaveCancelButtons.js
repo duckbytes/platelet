@@ -11,11 +11,11 @@ function SaveCancelButtons(props) {
             alignItems={"top"}
             spacing={3}
         >
-            <Button disabled={props.disabled} onClick={props.onSave}>
-                Save
-            </Button>
             <Button disabled={props.disabled} onClick={props.onCancel}>
                 Cancel
+            </Button>
+            <Button disabled={props.disabled} onClick={props.onSave}>
+                Save
             </Button>
         </Stack>
     );
