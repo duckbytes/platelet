@@ -85,17 +85,8 @@ function TaskActions(props) {
         timeSet.current = time;
     }
 
-    function handleTimeChange(value) {
-        props.onChange(value);
-    }
-
     function onChange(key) {
         const value = state.includes(key) ? null : timeSet.current;
-        setState((prevState) => {
-            if (prevState.includes(key))
-                return prevState.filter((v) => v !== key);
-            else return [...prevState, key];
-        });
         setTimeWithKey(key, value);
     }
 
@@ -295,9 +286,14 @@ function TaskActions(props) {
                         state.includes(confirmationKey.current)
                     )}
                     onConfirmation={() => {
+                        setConfirmDialogOpen(false);
                         onChange(confirmationKey.current);
                     }}
-                    onClose={() => setConfirmDialogOpen(false)}
+                    onClose={() => {
+                        if (state.includes(confirmationKey.current))
+                            setConfirmDialogOpen(false);
+                    }}
+                    onCancel={() => setConfirmDialogOpen(false)}
                 >
                     <TaskActionConfirmationDialogContents
                         onChange={(v) => onAdjustTimeSet(v)}
