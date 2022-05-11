@@ -46,7 +46,7 @@ async function sendWelcomeEmail(emailAddress, recipientName, password) {
                     Charset: "UTF-8",
                     Data: `
                     <p>
-                        Welcome to https://${process.env.plateletDomainName}, ${recipientName}!
+                        Welcome to https://${process.env.PLATELET_DOMAIN_NAME}, ${recipientName}!
                     </p>
                     <p>
                         Your account has been created. You can now start adding users to your team.
@@ -67,7 +67,7 @@ async function sendWelcomeEmail(emailAddress, recipientName, password) {
                 },
                 Text: {
                     Charset: "UTF-8",
-                    Data: `Welcome to https://${process.env.plateletDomainName}, ${recipientName}!
+                    Data: `Welcome to https://${process.env.PLATELET_DOMAIN_NAME}, ${recipientName}!
                     Your account has been created. You can now start adding users to your team.
                     You will be asked to change your password on first log in.
                     Username: ${emailAddress}
@@ -80,9 +80,9 @@ async function sendWelcomeEmail(emailAddress, recipientName, password) {
                 Data: "Welcome to Platelet!",
             },
         },
-        Source: process.env.plateletWelcomeEmail,
-        ReplyToAddresses: [process.env.plateletWelcomeEmail],
-        ReturnPath: process.env.plateletWelcomeEmail,
+        Source: process.env.PLATELET_WELCOME_EMAIL,
+        ReplyToAddresses: [process.env.PLATELET_WELCOME_EMAIL],
+        ReturnPath: process.env.PLATELET_WELCOME_EMAIL,
     };
 
     return await ses.sendEmail(params).promise();
