@@ -22,6 +22,7 @@ function* initialiseDataStoreListener() {
     ) {
         yield put(actions.setNetworkStatus(true));
         yield put(actions.setReadyStatus(true));
+        yield put(actions.setModelSyncedAll());
         return;
     } else if (process.env.REACT_APP_OFFLINE_ONLY === "true") {
         yield put(actions.setNetworkStatus(false));
@@ -39,10 +40,6 @@ function* initialiseDataStoreListener() {
                 console.log(`User has a network connection: ${data.active}`);
             } else if (event === "ready") {
                 yield put(actions.setReadyStatus(true));
-                // set all of modelsycned to true
-                // because when first logging in for some reason they don't all get triggered
-                // but datastore ready status does..
-                yield put(actions.setModelSyncedAll());
                 console.log("DataStore is ready");
             } else if (event === "modelSynced") {
                 console.log(`${data.model.name} is synced`);
