@@ -23,7 +23,7 @@ export default async function getAllTasksByUser(
     }
 
     if (isCompletedTab(keys)) {
-        const oneWeekAgo = moment.utc().subtract(7, "days").toISOString();
+        const oneWeekAgo = moment.utc().subtract(14, "days").toISOString();
         allTasks = await DataStore.query(
             models.Task,
             (task) =>
